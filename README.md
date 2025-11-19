@@ -27,3 +27,4 @@ Detta projekt är en enkel crypto-applikation som hämtar prisdata från CoinGec
 2. Om testerna går igenom:
    - Bygg applikationen (t.ex. docker-image i ett senare steg)
 3. (Senare) Deploy till moln (t.ex. Azure).
+# trigger run
