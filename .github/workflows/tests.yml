@@ -41,10 +41,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Simulated build step
-        run: |
-          echo "Building application..."
-          echo "Here we would build Docker image in a later step."
+      - name: Build Docker image
+        run: docker build -t devops-crypto-app .
 
   deploy:
     needs: build
