@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      run_tests:
+        description: "Run tests?"
+        type: boolean
+        default: true
 
 jobs:
   tests:
@@ -25,5 +30,5 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -q
-
+        if: ${{ github.event.inputs.run_tests == 'true' }}
+        run: pytest -q 
