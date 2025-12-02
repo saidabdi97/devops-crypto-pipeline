@@ -32,10 +32,13 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-mock
 
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src/webapp" >> $GITHUB_ENV
+
       - name: Run tests
         id: run_tests
         run: |
-          pytest -q || echo "TEST FAILED" > error_log.txt
+          pytest src/tests -q || echo "TEST FAILED" > error_log.txt
 
       - name: Upload error logs
         if: ${{ github.event.inputs.log_errors == 'true' && hashFiles('error_log.txt') != '' }}
